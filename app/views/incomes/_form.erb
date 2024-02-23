@@ -1,0 +1,9 @@
+<%= form_with(model: @income) do |f| %>
+    <%= f.label :year_month, "年月" %>
+    <%= f.month_field :year_month, value: Date.today.strftime("%Y年%m月") %>
+
+    <%= f.label :price, "金額" %>
+    <%= f.number_field :price %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

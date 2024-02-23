@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  id: 1
+  name: 食費
+
+two:
+  id: 2
+  name: 外食費
+
+three:
+  id: 3
+  name: 生活用品
+
+four:
+  id: 4
+  name: 生活家電
+
+five:
+  id: 5
+  name: 生活家電

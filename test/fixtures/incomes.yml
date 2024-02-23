@@ -1,0 +1,14 @@
+# == Schema Information
+#
+# Table name: incomes
+#
+#  id         :integer          not null, primary key
+#  price      :integer
+#  year_month :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  price: 200000
+  year_month: "2024-02"

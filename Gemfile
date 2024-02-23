@@ -44,7 +44,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "bootstrap-sass",  "3.4.1"
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
+gem 'whenever', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -52,12 +53,14 @@ gem "bootstrap-sass",  "3.4.1"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
+  gem "annotate"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "solargraph",  "0.48.0"
+  gem "pry-rails"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
