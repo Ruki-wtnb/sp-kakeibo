@@ -25,4 +25,6 @@ class MonthlyTotal < ApplicationRecord
     uniqueness: true
 
     scope :get_this_month, -> { find_by(year_month: Date.today.strftime("%Y-%m")) }
+    scope :count_this_month, -> { where(year_month: Date.today.strftime("%Y-%m")).count }
+
 end

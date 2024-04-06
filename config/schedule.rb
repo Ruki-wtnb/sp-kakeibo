@@ -19,6 +19,23 @@
 
 # Learn more: http://github.com/javan/whenever
 
+# Cronの起動
+# bundle exec whenever --update-crontab && sudo cron && tail -f log/crontab.log
+# Cronの停止
+# sudo service cron stop
+
 require File.expand_path(File.dirname(__FILE__) + '/environment')
 
+# コンテナ起動時の環境変数をcron独自の環境変数にパス
+ENV.each { |k, v| env(k, v) }
 
+#出力先のログ
+set :output, 'log/cron_monthly_batch.log'
+#実行環境
+set :environment, :development
+    
+#実行日時
+every 1.month, at: 'start of the month at 7am' do
+    rake 'monthly_task:income'
+    rake 'monthly_task:fixed_costs'
+end

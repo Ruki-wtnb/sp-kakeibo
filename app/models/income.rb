@@ -9,6 +9,11 @@
 #  updated_at :datetime         not null
 #
 class Income < ApplicationRecord
+
+    after_save :caluculate_monthly_total
+    after_update :caluculate_monthly_total
+    after_destroy :caluculate_monthly_total
+
     validates :price, presence: true,
     numericality: { 
         only_integer: true,
@@ -24,4 +29,6 @@ class Income < ApplicationRecord
     },
     uniqueness: true
     scope :get_this_month, -> { find_by(year_month: Date.today.strftime("%Y-%m")) }
+    scope :count_this_month, -> { where(year_month: Date.today.strftime("%Y-%m")).count }
+  
 end

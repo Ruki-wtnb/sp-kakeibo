@@ -1,7 +1,7 @@
 module DailyCostsHelper
 
     def get_categories
-        Category.get
+        Category.get_daily
     end
 
 end

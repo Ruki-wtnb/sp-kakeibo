@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+category_names = ["食費","外食費","生活用品","生活家電","生活家具","家賃","水道代","ガス代","Wifi代"]
+
+category_records = category_names.map.with_index do |name, i|
+    Category.create("id": i+1, "name": name )
+end  

@@ -33,22 +33,4 @@ class CategoryTotal < ApplicationRecord
 
     scope :get_this_month, -> { where('year_month LIKE ?', "%#{Date.today.strftime("%Y-%m")}%") }
 
-    private
-
-    def caluculate_monthly_total
-
-        income = Income.where(year_month: self.year_month).sum(:price)
-        all_category_total = CategoryTotal.where(year_month: self.year_month).sum(:price)
-
-        total = income - all_category_total
-
-        monthly_total ||= MonthlyTotal.find_by(year_month: self.year_month)
-
-        if monthly_total.nil?
-            MonthlyTotal.create(year_month: self.year_month, price: total)
-        else
-            MonthlyTotal.update(year_month: self.year_month, price: total)
-        end
-    end
-
 end

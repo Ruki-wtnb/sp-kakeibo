@@ -14,6 +14,12 @@
           <td>収入</td>
           <td><%= @income&.price %></td>
         </tr>
+        <% @fixed_costs.each do |f| %>
+          <tr class="warning">
+            <td><%= f.category.name %></td>
+            <td><%= f.price %></td>
+          </tr>
+        <% end %>
         <% @category_total.each do |c| %>
           <tr class="warning">
             <td><%= c.category.name %></td>

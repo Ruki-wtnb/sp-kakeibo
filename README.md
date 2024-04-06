@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+* cron関係
+- 起動
+    - bundle exec whenever --update-crontab && sudo cron && tail -f log/crontab.log
+- 停止
+    - sudo service cron stop

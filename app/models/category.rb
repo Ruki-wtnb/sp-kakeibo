@@ -10,8 +10,10 @@
 class Category < ApplicationRecord
     validates :name, presence: true, uniqueness: true
 
-    scope :get, -> { pluck(:name, :id) }
+    scope :get_daily, -> { where(id: ..5).pluck(:name, :id) }
+    scope :get_fix, -> { where(id: 6..).pluck(:name, :id) }
 
     has_many :daily_costs
+    has_many :fixed_costs
     has_many :category_total
 end
