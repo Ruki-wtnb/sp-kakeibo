@@ -3,7 +3,7 @@
     <%= f.date_field :pay_date, value: Date.today %>
 
     <%= f.label :category_id, "カテゴリ" %>
-    <%= f.select :category_id, get_categories %>
+    <%= f.select :category_id, get_daily_categories %>
 
     <%= f.label :detail, "詳細" %>
     <%= f.text_field :detail %>

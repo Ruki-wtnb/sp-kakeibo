@@ -12,12 +12,11 @@ namespace :monthly_task do
   desc "毎月の支出を登録"
   task :fixed_cost => :environment do
     if !FixedCost.find_by(year_month: Date.today.strftime("%Y-%m"), category_id: 6)
-      FixedCost.create(price: 12100, year_month: Date.today.strftime("%Y-%m"), category_id: 6)
+      FixedCost.create(price: 12800, year_month: Date.today.strftime("%Y-%m"), category_id: 6)
     end
 
     if !FixedCost.find_by(year_month: Date.today.strftime("%Y-%m"), category_id: 9)
       FixedCost.create(price: 4733, year_month: Date.today.strftime("%Y-%m"), category_id: 9)
     end
   end
-
 end

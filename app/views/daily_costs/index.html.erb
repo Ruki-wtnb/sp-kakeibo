@@ -7,28 +7,38 @@
         <tr>
           <th scope="col">カテゴリ</th>
           <th scope="col">金額</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr class="info">
           <td>収入</td>
           <td><%= @income&.price %></td>
+          <td></td>
+          <td></td>
         </tr>
         <% @fixed_costs.each do |f| %>
           <tr class="warning">
             <td><%= f.category.name %></td>
             <td><%= f.price %></td>
+            <td><%= link_to "編集", edit_fixed_cost_path(f) %></td>
+            <td><%= link_to "削除", f, data: { "turbo-method": :delete, 
+            turbo_confirm: "項目を削除しますか？"} %></td>
           </tr>
         <% end %>
         <% @category_total.each do |c| %>
           <tr class="warning">
             <td><%= c.category.name %></td>
             <td><%= c.price %></td>
+            <td></td>
+            <td></td>
           </tr>
         <% end %>
         <tr class="success">
           <td>収支合計</td>
           <td><%= @monthly_total&.price %></td>
+          <td></td>
+          <td></td>
         </tr>
       </tbody>
     </table>

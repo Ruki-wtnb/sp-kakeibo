@@ -34,7 +34,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_05_124212) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "fixed_costs", force: :cascade do |t|
     t.integer "price"
     t.string "year_month"
