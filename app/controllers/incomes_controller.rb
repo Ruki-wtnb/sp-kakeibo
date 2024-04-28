@@ -7,7 +7,7 @@ class IncomesController < ApplicationController
   def create
     income = Income.new(income_params)
     if income.save
-      render 'new'
+      redirect_to action: :new
     else
       flash.now[:danger] = 'Invalid Parameter'
       render 'new', status: :unprocessable_entity

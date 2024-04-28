@@ -6,7 +6,7 @@ class FixedCostsController < ApplicationController
   def create
     fixed_cost = FixedCost.new(fixed_cost_params)
     if fixed_cost.save
-      render 'new'
+      redirect_to action: :new
     else
       flash.now[:danger] = 'Invalid parameter'
       render 'new', status: :unprocessable_entity

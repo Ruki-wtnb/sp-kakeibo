@@ -1,12 +1,7 @@
 class DailyCostsController < ApplicationController
   include DailyCostsHelper
   def index
-    # modelに定義しているメソッド
-    @daily_costs ||= DailyCost.get_this_month
-    @fixed_costs ||= FixedCost.get_this_month
-    @category_total ||= CategoryTotal.get_this_month
-    @income = Income.count_this_month != 0 ? Income.get_this_month : nil
-    @monthly_total = MonthlyTotal.count_this_month != 0 ? MonthlyTotal.get_this_month : nil
+
   end
 
   def show
@@ -21,7 +16,7 @@ class DailyCostsController < ApplicationController
     daily_cost = DailyCost.new(daily_cost_params)
     if daily_cost.save
       #caluculate_category_total(daily_cost.category_id, daily_cost.pay_date.strftime("%Y-%m"), daily_cost.price)
-      render 'new'
+      redirect_to action: :new
     else
       flash.now[:danger] = 'Invalid parameter'
       render 'new', status: :unprocessable_entity
