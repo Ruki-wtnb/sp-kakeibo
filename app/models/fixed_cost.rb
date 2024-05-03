@@ -14,9 +14,9 @@ class FixedCost < ApplicationRecord
     belongs_to :category
 
     validates :category_id,
-    presence: true, 
+    presence: true,
     numericality: { only_integer: true },
-    length: { is: 1}
+    length: { maximum: 2}
 
     REGEX_FOR_YEAR_MONTH = /\A20[0-9]{2}-(0[1-9]|1[0-2])\z/
     validates :year_month, presence: true,

@@ -33,9 +33,9 @@ ENV.each { |k, v| env(k, v) }
 set :output, 'log/cron_monthly_batch.log'
 #実行環境
 set :environment, :development
-    
+
 #実行日時
-every 1.month, at: 'start of the month at 7am' do
+every 1.month, at: 'start of the month at 0:40am' do
     rake 'monthly_task:income'
-    rake 'monthly_task:fixed_costs'
+    rake 'monthly_task:fixed_cost'
 end

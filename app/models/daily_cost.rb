@@ -18,16 +18,16 @@ class DailyCost < ApplicationRecord
 
     validates :pay_date, presence: true
     validates :category_id,
-        presence: true, 
+        presence: true,
         numericality: { only_integer: true },
-        length: { is: 1}
+        length: { miximun: 2}
     validates :detail, presence: true
     validates :price,
         presence: true,
         numericality: { only_integer: true, greater_than: 0, less_than: 100000 }
 
     scope :get_this_month, -> { where('pay_date LIKE ?', "%#{Date.today.strftime("%Y-%m")}%") }
-    
+
     belongs_to :category
 
     private
@@ -39,7 +39,7 @@ class DailyCost < ApplicationRecord
         year_month = get_ym_from_date(self.pay_date)
         #該当月・カテゴリーの合計を取得する
         category_total ||= CategoryTotal.find_by(category_id: self.category_id, year_month: year_month)
-        
+
         # カテゴリー合計がnilの場合:モデルを新規作成、nilでない場合:合計を再計算・アップデート
         if category_total.nil?
             CategoryTotal.create(category_id: self.category_id, year_month: year_month, price: self.price)
