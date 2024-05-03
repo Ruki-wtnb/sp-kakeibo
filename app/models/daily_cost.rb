@@ -20,7 +20,7 @@ class DailyCost < ApplicationRecord
     validates :category_id,
         presence: true,
         numericality: { only_integer: true },
-        length: { miximun: 2}
+        length: { maximum: 2}
     validates :detail, presence: true
     validates :price,
         presence: true,

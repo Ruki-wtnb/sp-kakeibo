@@ -10,6 +10,9 @@
 #  updated_at  :datetime         not null
 #
 class FixedCost < ApplicationRecord
+    after_save :caluculate_monthly_total
+    after_update :caluculate_monthly_total
+    after_destroy :caluculate_monthly_total
 
     belongs_to :category
 
