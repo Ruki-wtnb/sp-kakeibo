@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  
+  resources :home
   resources :incomes
   resources :daily_costs
   resources :fixed_costs

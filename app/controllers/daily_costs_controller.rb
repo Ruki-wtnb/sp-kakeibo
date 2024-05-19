@@ -15,8 +15,7 @@ class DailyCostsController < ApplicationController
   def create
     daily_cost = DailyCost.new(daily_cost_params)
     if daily_cost.save
-      #caluculate_category_total(daily_cost.category_id, daily_cost.pay_date.strftime("%Y-%m"), daily_cost.price)
-      redirect_to action: :new
+      render action: :new, status: 201
     else
       flash.now[:danger] = 'Invalid parameter'
       render 'new', status: :unprocessable_entity
@@ -26,7 +25,7 @@ class DailyCostsController < ApplicationController
   def destroy
     DailyCost.find(params[:id]).destroy
     flash[:success] = "Delete Complete"
-    redirect_to daily_costs_path
+    redirect_to home_index_path
   end
 
   def edit

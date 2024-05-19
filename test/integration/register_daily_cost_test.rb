@@ -29,13 +29,14 @@ class RegisterDailyCostTest < ActionDispatch::IntegrationTest
     assert_difference 'DailyCost.count', 1 do
       # 登録画面にアクセス
       get new_daily_cost_path
+      assert_template 'daily_costs/new'
 
-      post daily_costs_path(params: { daily_cost: {
+      post daily_costs_path, params: { daily_cost: {
         pay_date: "2023-12-10",
         category_id: "1",
         detail: "つきあたりみぎ野菜",
         price: 735
-        }})
+        }}
 
       assert_response :success
       assert_template 'daily_costs/new'

@@ -28,7 +28,7 @@ class FixedCost < ApplicationRecord
         message: "YYYY-MMの形式で入力してください。"
     },
     uniqueness: { scope: :category_id }
-    scope :get_this_month, -> { where(year_month: Date.today.strftime("%Y-%m")).order(categoty_id: :asc) }
+    scope :get_this_month, -> (year_month){ where('year_month LIKE ?', "%#{year_month}%") }
     scope :count_this_month, -> { where(year_month: Date.today.strftime("%Y-%m")).count }
 
 end

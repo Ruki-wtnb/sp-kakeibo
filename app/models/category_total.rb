@@ -31,5 +31,5 @@ class CategoryTotal < ApplicationRecord
 
     belongs_to :category
 
-    scope :get_this_month, -> { where('year_month LIKE ?', "%#{Date.today.strftime("%Y-%m")}%") }
+    scope :get_this_month, -> (year_month){ where('year_month LIKE ?', "%#{year_month}%") }
 end

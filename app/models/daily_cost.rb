@@ -26,7 +26,7 @@ class DailyCost < ApplicationRecord
         presence: true,
         numericality: { only_integer: true, greater_than: 0, less_than: 100000 }
 
-    scope :get_this_month, -> { where('pay_date LIKE ?', "%#{Date.today.strftime("%Y-%m")}%") }
+    scope :get_this_month, -> (year_month){ where('pay_date LIKE ?', "%#{year_month}%") }
 
     belongs_to :category
 

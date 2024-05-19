@@ -9,13 +9,3 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-
-one:
-  price: 1
-  year_month: MyString
-  string: MyString
-
-two:
-  price: 1
-  year_month: MyString
-  string: MyString
