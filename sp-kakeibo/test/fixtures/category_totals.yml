@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: category_totals
+#
+#  id          :integer          not null, primary key
+#  price       :integer
+#  category_id :string
+#  year_month  :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+total_one:
+  price: 10000
+  category_id: "1"
+  year_month: "2024-01"

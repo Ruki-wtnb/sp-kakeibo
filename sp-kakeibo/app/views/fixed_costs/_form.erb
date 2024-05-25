@@ -1,0 +1,12 @@
+<%= form_with(model: @fixed_cost) do |f| %>
+    <%= f.label :year_month, "年月" %>
+    <%= f.month_field :year_month, value: Date.today.strftime("%Y-%m") %>
+
+    <%= f.label :category_id, "カテゴリ" %>
+    <%= f.select :category_id, get_fix_categories %>
+
+    <%= f.label :price, "金額" %>
+    <%= f.number_field :price %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

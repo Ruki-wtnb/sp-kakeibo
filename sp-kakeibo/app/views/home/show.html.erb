@@ -1,0 +1,11 @@
+
+<h1><%= @year_month %>の家計</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <% @this_year_month.each do |f| %>
+      <%= link_to "#{f}", home_path(f) %>
+    <% end %>
+    <%= render "table", locals: { income: @income, fixed_costs: @fixed_costs, pcategory_total: @category_total,
+                                  monthly_total: @monthly_total, daily_cost: @daily_costs } %>
+    </div>
+</div>
