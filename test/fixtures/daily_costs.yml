@@ -3,7 +3,7 @@
 # Table name: daily_costs
 #
 #  id          :integer          not null, primary key
-#  pay_date    :date
+#  pay_day    :date
 #  category_id :string
 #  detail      :string
 #  price       :integer
@@ -12,19 +12,19 @@
 #
 
 # one:
-#   pay_date: 2023-11-24
+#   pay_day: 2023-11-24
 #   category_id: MyString
 #   detail: MyString
 #   price: 1
 
 # two:
-#   pay_date: 2023-11-24
+#   pay_day: 2023-11-24
 #   category_id: MyString
 #   detail: MyString
 #   price: 1
 
 cost:
-  pay_date: "2023-11-16"
+  pay_day: "2023-11-16"
   category_id: "1"
   detail: "ななまがりやおき"
   price: 750

@@ -52,7 +52,7 @@
   <tbody>
     <% @daily_costs.each do |d| %>
       <tr>
-        <td><%= d.pay_date.strftime("%d日") %></td>
+        <td><%= d.pay_day.strftime("%d日") %></td>
         <td><%= d.category.name %></td>
         <td><%= d.detail %></td>
         <td><%= d.price %></td>

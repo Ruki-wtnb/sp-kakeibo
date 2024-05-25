@@ -1,6 +1,6 @@
 <%= form_with(model: @daily_cost) do |f| %>
-    <%= f.label :pay_date, "日付" %>
-    <%= f.date_field :pay_date, value: Date.today %>
+    <%= f.label :pay_day, "日付" %>
+    <%= f.date_field :pay_day, value: Date.today %>
 
     <%= f.label :category_id, "カテゴリ" %>
     <%= f.select :category_id, get_daily_categories %>

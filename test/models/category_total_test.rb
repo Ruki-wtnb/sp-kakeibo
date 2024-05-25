@@ -42,7 +42,7 @@ class CategoryTotalTest < ActiveSupport::TestCase
   end
 
   test "caluculate total when dailycost input" do
-    @cost = DailyCost.create(pay_date: Date.today, category_id: "1", detail: "ななまがりやおき", price: 750)
+    @cost = DailyCost.create(pay_day: Date.today, category_id: "1", detail: "ななまがりやおき", price: 750)
     @category_total = CategoryTotal.find_by(category_id: "1", year_month: Date.today.strftime("%Y-%m"))
     assert @category_total.price == 750
   end

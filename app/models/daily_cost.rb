@@ -3,7 +3,7 @@
 # Table name: daily_costs
 #
 #  id          :integer          not null, primary key
-#  pay_date    :date
+#  pay_day    :date
 #  category_id :string
 #  detail      :string
 #  price       :integer
@@ -16,7 +16,7 @@ class DailyCost < ApplicationRecord
     after_update :caluculate_category_total
     after_destroy :caluculate_category_total
 
-    validates :pay_date, presence: true
+    validates :pay_day, presence: true
     validates :category_id,
         presence: true,
         numericality: { only_integer: true },
@@ -26,7 +26,7 @@ class DailyCost < ApplicationRecord
         presence: true,
         numericality: { only_integer: true, greater_than: 0, less_than: 100000 }
 
-    scope :get_this_month, -> (year_month){ where('pay_date LIKE ?', "%#{year_month}%") }
+    scope :get_this_month, -> (year_month){ where('pay_day LIKE ?', "%#{year_month}%") }
 
     belongs_to :category
 
@@ -36,7 +36,7 @@ class DailyCost < ApplicationRecord
     end
 
     def caluculate_category_total
-        year_month = get_ym_from_date(self.pay_date)
+        year_month = get_ym_from_date(self.pay_day)
         #該当月・カテゴリーの合計を取得する
         category_total ||= CategoryTotal.find_by(category_id: self.category_id, year_month: year_month)
 
@@ -44,7 +44,7 @@ class DailyCost < ApplicationRecord
         if category_total.nil?
             CategoryTotal.create(category_id: self.category_id, year_month: year_month, price: self.price)
         else
-            total = DailyCost.where("pay_date like ?", "#{year_month}%").where(category_id: self.category_id).sum(:price)
+            total = DailyCost.where("pay_day like ?", "#{year_month}%").where(category_id: self.category_id).sum(:price)
             category_total.update(price: total)
         end
     end

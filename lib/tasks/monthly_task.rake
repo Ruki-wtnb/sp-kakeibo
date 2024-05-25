@@ -23,6 +23,6 @@ end
 
 namespace :test_task do
   task :test => :environment do
-    DailyCost.create(pay_date: "2024-05-01", category_id: "1", detail: "ななまがりやおき", price: 750)
+    DailyCost.create(pay_day: "2024-05-01", category_id: "1", detail: "ななまがりやおき", price: 750)
   end
 end

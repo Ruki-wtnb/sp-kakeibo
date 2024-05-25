@@ -44,7 +44,7 @@ class DailyCostsController < ApplicationController
 
   private
     def daily_cost_params
-      params.require(:daily_cost).permit(:pay_date, :category_id, :detail, :price)
+      params.require(:daily_cost).permit(:pay_day, :category_id, :detail, :price)
     end
 
 end

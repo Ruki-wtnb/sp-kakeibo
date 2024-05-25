@@ -13,7 +13,7 @@ class RegisterDailyCostTest < ActionDispatch::IntegrationTest
       get new_daily_cost_path
 
       post daily_costs_path, params: { daily_cost: {
-        pay_date: "20231210",
+        pay_day: "20231210",
         category_id: "",
         detail: "つきあたりみぎ野菜",
         price: 735
@@ -32,7 +32,7 @@ class RegisterDailyCostTest < ActionDispatch::IntegrationTest
       assert_template 'daily_costs/new'
 
       post daily_costs_path, params: { daily_cost: {
-        pay_date: "2023-12-10",
+        pay_day: "2023-12-10",
         category_id: "1",
         detail: "つきあたりみぎ野菜",
         price: 735
@@ -52,7 +52,7 @@ class RegisterDailyCostTest < ActionDispatch::IntegrationTest
   test "delete daily cost no difference" do
     assert_no_difference 'DailyCost.count' do
       post daily_costs_path(params: { daily_cost: {
-        pay_date: "2023-12-10",
+        pay_day: "2023-12-10",
         category_id: "1",
         detail: "つきあたりみぎ野菜",
         price: 735
