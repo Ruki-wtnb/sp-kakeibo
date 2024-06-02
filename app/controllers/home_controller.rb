@@ -18,7 +18,7 @@ class HomeController < ApplicationController
     @income = Income.count_this_month(@year_month) != 0 ? Income.get_this_month(@year_month) : nil
     @monthly_total = MonthlyTotal.count_this_month(@year_month) != 0 ? MonthlyTotal.get_this_month(@year_month) : nil
     
-    @this_year_month = Income.where('year_month LIKE ?', "%#{Date.today.year}%").pluck(:year_month)
+    @this_year_month = Income.where('`year_month` LIKE ?', "%#{Date.today.year}%").pluck(:year_month)
 
   end
 end
